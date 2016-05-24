@@ -1,0 +1,119 @@
+<head>
+	<title>Perceive</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+
+<body></body>
+
+<template name="main">
+<div id="main">
+	{{> flashMessages}}
+	{{> tooltips}}
+	{{> Template.dynamic template=whichView}}
+	{{> ruleBox}}
+	{{> footer}}
+</div>
+</template>
+
+<template name="startmenu">
+<div id="startmenu">
+	<h2>Perceive</h2>
+	a game of separating truth from lies<br><br>
+
+	<ul class="options">
+		<li>
+			{{> tooltippy text="Number of players trying to find the correct answer"}}
+			# of Good Players <input id="numGood" type="text" value="{{numGood}}">
+		</li><li>
+			{{> tooltippy text="Number of players trying to prevent the group from finding the correct answer"}}
+			# of Evil Players <input id="numBad" type="text" value="{{numBad}}">
+		</li><li>
+			{{> tooltippy text="Show one fake clue to the good players?"}}
+			Add Red Herring? <input id="hasRedHerring" value="1" type="checkbox" checked={{hasRedHerring}}>
+		</li><li>
+			{{> tooltippy text="Do the evil players know the correct answer?"}}
+			Evil is Wise? <input id="isEvilWise" value="1" type="checkbox" checked={{isEvilWise}}>
+		</li><li>
+			{{> tooltippy text="Do the evil players know one another?"}}
+			Conspiracy? <input id="gotConspiracy" value="1" type="checkbox" checked={{gotConspiracy}}>
+		</li><li>
+			{{> tooltippy text="Prevent displaying the contents of boxes more than once?"}}
+			Prevent Accidents/Cheating? <input id="preventAccidents" value="1" type="checkbox" checked={{preventAccidents}}>
+		</li><li>
+			{{> tooltippy text="Which choice and hint set do you want to use?"}}
+			Game Set?
+			<select id="gameSet">
+				{{#each gameSets}}
+					<option value="{{this}}" selected={{equals gameSet this}}>{{this}}</option>
+				{{/each}}
+			</select>
+		</li>
+	</ul>
+
+	<div class="buttonrow">
+		<button id="newgame" class="btn btn-success">New Game</button>
+	</div>
+</div>
+</template>
+
+<template name="lobby">
+<div id="lobby">
+	<table id="choices">
+		<tr>
+			<td>Name</td>
+		{{#each parameters}}
+			<td>{{this}}</td>
+		{{/each}}
+		</tr>
+		{{#each choices}}{{{this}}}{{/each}}
+	</table>
+
+	<div class="buttonrow noSelect">
+		{{#each players}}
+			<button class="secret tapToShow" data-value="<ul>{{#each value}}<li>{{this}}</li>{{/each}}</ul>">Player {{index}}</button>
+		{{/each}}
+	</div>
+
+	<div class="buttonrow noSelect">
+		<button class="secret tapToShow" data-value="{{correctChoice}}">Answer</button>
+		<button class="secret tapToShow" data-value="<ul>{{#each selectedHints}}<li>{{this}}</li>{{/each}}</ul>">Shown Hints</button>
+		<button class="secret tapToShow" data-value="{{redHerring}}">Red Herring</button>
+	</div>
+
+	<div class="buttonrow">
+		<button class="btn btn-danger leavegame inlobby">Leave Game</button>
+	</div>
+</div>
+</template>
+
+<template name="tooltippy">
+	<button class="btn-tooltip" data-tooltip="{{text}}" data-tooltip-direction="e"></button>
+</template>
+
+<template name="ruleBox">
+<div id="ruleBox">
+	<div class="buttonrow">
+		<button id="togglerules" class="btn btn-primary">Rules</button>
+	</div>
+	{{> ruleContent}}
+</div>
+</template>
+
+<template name="ruleContent">
+<div id="ruleContent">
+	At the start of the game, players take turns to view the info available to them (under the boxes "Player #"). The good players are given hints to find the right answer, and the evil players try to confuse them (they are not given hints, and they may or may not know the right answer depending on your settings).<br><br>
+
+	After discussion and reaching a group consensus, players can start guessing by tapping the name of the choice to see if it is correct.<br><br>
+
+	Alternatively, instead of getting the players who viewed info to reach a group consensus, you could have a separate player (or group) who does not get to view any of the info boxes (and who does not contribute to the count of good or evil players when setting up the game) listen to everyone's input and then make the decision on their own.
+
+	When the game is over, players may all view the last 3 boxes to see the overall information that was available.
+</div>
+</template>
+
+<template name="footer">
+<div id="footer">
+	Version {{versionNo}}. Copyright &copy; 2015 Zenador. All rights reserved. Free to play.<br>
+	<a href="http://nightphase.herokuapp.com/" target="_blank">Hidden role games</a> | <a href="http://codenamesgame.herokuapp.com/" target="_blank">Codenames</a> | <a href="http://quiztimegame.herokuapp.com/" target="_blank">Fibbage/Psych</a>
+</div>
+</template>

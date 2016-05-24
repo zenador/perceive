@@ -1,0 +1,107 @@
+body {
+	font-family: 'Open Sans', Calibri, Helvetica, Verdana, Tahoma, Arial, sans-serif;
+	font-size: 90%;
+	padding: 1em;
+}
+
+h2 {
+	font-size: 160%;
+}
+
+h3 {
+	font-size: 130%;
+}
+
+h5 {
+	font-size: 110%;
+}
+
+@media screen and (max-device-width: 768px) {
+	select, textarea, input,
+	select:focus, textarea:focus, input:focus {
+		font-size: 16px;
+	}
+}
+
+strong {
+	font-weight: bold;
+}
+
+.hidden {
+	display: none;
+}
+
+.disabled {
+	pointer-events: none;
+}
+
+.buttonrow {
+	margin: 1em 0;
+}
+
+input#numGood, input#numBad {
+	width: 3em;
+}
+
+#ruleContent {
+	display: none;
+}
+
+#startmenu h3, #footer {
+	margin-top: 1em;
+}
+
+.noSelect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+button.secret {
+	display: block;
+	color: white;
+	background-color: black;
+	border: 0;
+	border-radius: 1em;
+	width: 50%;
+	padding: 1em 0em;
+	margin: 0.1em 0;
+}
+
+button.secret.tapToHide {
+	color: black;
+	background-color: #eee;
+}
+
+button.secret.disabled {
+	opacity: 0.1;
+	text-decoration: line-through;
+}
+
+button.secret ul, button.secret li {
+	pointer-events: none;
+}
+
+button.btn-tooltip {
+	background: transparent url('images/glyphicons-196-circle-info.png') no-repeat center;
+	background-size: contain;
+	border: 0;
+	width: 20px;
+	height: 20px;
+	pointer-events: auto;
+}
+
+table#choices {
+	margin-bottom: 1em;
+}
+
+table#choices td {
+	padding: 0.3em 1em;
+}
+
+table#choices td.makeGuess {
+	cursor: pointer;
+}
