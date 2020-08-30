@@ -1,0 +1,23 @@
+{
+  "name": "perceive",
+  "version": "1.0.0",
+  "description": "A guessing game with conflicting info. Quick and simple. At least 3 players, preferably more.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/zenador/perceive.git"
+  },
+  "author": "Zenador",
+  "license": "MIT",
+  "homepage": "https://github.com/zenador/perceive#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.11.2"
+  }
+}
